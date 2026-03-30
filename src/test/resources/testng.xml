@@ -18,4 +18,16 @@
             <class name="com.globant.mobile.tests.SignUpTest"/>
         </classes>
     </test>
+
+    <test name="Login Tests">
+        <classes>
+            <class name="com.globant.mobile.tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="Swipe Tests">
+        <classes>
+            <class name="com.globant.mobile.tests.SwipeTest"/>
+        </classes>
+    </test>
 </suite>
