@@ -38,21 +38,35 @@ public class LoginScreen extends BasePage {
     private WebElement signUpButton;
 
     @AndroidFindBy(id = "android:id/message")
-    private WebElement successMessage;
+    private WebElement alertMessage;
 
     @AndroidFindBy(id = "android:id/button1")
-    private WebElement successOkButton;
+    private WebElement alertOkButton;
 
     public LoginScreen(AppiumDriver driver) {
         super(driver);
     }
 
-    public void openSignUpTab() {
-        click(signUpTab, "Sign up tab");
+    public void completeLoginForm(String email, String password) {
+        sendText(emailInput, email);
+        sendText(passwordInput, password);
     }
 
-    public boolean isSignUpTabVisible() {
-        return isTheElementVisible(signUpTab, 5);
+    public void login(String email, String password) {
+        completeLoginForm(email, password);
+        tapLoginButton();
+    }
+
+    public void tapLoginButton() {
+        click(loginButton, "Login button");
+    }
+
+    public void openLoginTab() {
+        click(loginTab, "login tab");
+    }
+
+    public void openSignUpTab() {
+        click(signUpTab, "Sign up tab");
     }
 
     public void completeSignUpForm(String email, String password, String confirmPassword) {
@@ -66,11 +80,11 @@ public class LoginScreen extends BasePage {
     }
 
     public String getSuccessMessageText() {
-        return getText(successMessage);
+        return getText(alertMessage);
     }
 
     public void confirmSuccessPopup() {
-        click(successOkButton, "Success OK button");
+        click(alertOkButton, "Success OK button");
     }
 
     public boolean isLoginScreenDisplayed() {
@@ -79,6 +93,10 @@ public class LoginScreen extends BasePage {
 
     public boolean areElementsVisible() {
         return isTheElementVisible(emailInput, 5) && isTheElementVisible(passwordInput, 5) && isTheElementVisible(loginButton, 5);
+    }
+
+    public boolean isSignUpTabVisible() {
+        return isTheElementVisible(signUpTab, 5);
     }
 
     public boolean isSignUpFormVisible() {
