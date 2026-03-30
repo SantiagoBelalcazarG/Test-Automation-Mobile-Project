@@ -3,6 +3,13 @@
 <suite name="Mobile Automation Suite" verbose="1">
     <test name="Base Setup">
         <classes>
+            
+        </classes>
+    </test>
+
+    <test name="Navigation Tests">
+        <classes>
+            <class name="com.globant.mobile.tests.NavigationTest"></class>
         </classes>
     </test>
 </suite>
