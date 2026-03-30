@@ -10,6 +10,12 @@ public class LoginScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Login / Sign up Form']")
     private WebElement loginTitle;
 
+    @AndroidFindBy(accessibility = "button-login-container")
+    private WebElement loginTab;
+
+    @AndroidFindBy(accessibility = "button-sign-up-container")
+    private WebElement signUpTab;
+
     @AndroidFindBy(accessibility = "input-email")
     private WebElement emailInput;
 
@@ -19,8 +25,52 @@ public class LoginScreen extends BasePage {
     @AndroidFindBy(accessibility = "button-LOGIN")
     private WebElement loginButton;
 
+    @AndroidFindBy(accessibility = "input-email")
+    private WebElement signUpEmailInput;
+
+    @AndroidFindBy(accessibility = "input-password")
+    private WebElement signUpPasswordInput;
+
+    @AndroidFindBy(accessibility = "input-repeat-password")
+    private WebElement signUpConfirmPasswordInput;
+
+    @AndroidFindBy(accessibility = "button-SIGN UP")
+    private WebElement signUpButton;
+
+    @AndroidFindBy(id = "android:id/message")
+    private WebElement successMessage;
+
+    @AndroidFindBy(id = "android:id/button1")
+    private WebElement successOkButton;
+
     public LoginScreen(AppiumDriver driver) {
         super(driver);
+    }
+
+    public void openSignUpTab() {
+        click(signUpTab, "Sign up tab");
+    }
+
+    public boolean isSignUpTabVisible() {
+        return isTheElementVisible(signUpTab, 5);
+    }
+
+    public void completeSignUpForm(String email, String password, String confirmPassword) {
+        sendText(signUpEmailInput, email);
+        sendText(signUpPasswordInput, password);
+        sendText(signUpConfirmPasswordInput, confirmPassword);
+    }
+
+    public void tapSignUpButton() {
+        click(signUpButton, "Sign up button");
+    }
+
+    public String getSuccessMessageText() {
+        return getText(successMessage);
+    }
+
+    public void confirmSuccessPopup() {
+        click(successOkButton, "Success OK button");
     }
 
     public boolean isLoginScreenDisplayed() {
@@ -29,6 +79,10 @@ public class LoginScreen extends BasePage {
 
     public boolean areElementsVisible() {
         return isTheElementVisible(emailInput, 5) && isTheElementVisible(passwordInput, 5) && isTheElementVisible(loginButton, 5);
+    }
+
+    public boolean isSignUpFormVisible() {
+        return isTheElementVisible(signUpEmailInput, 5) && isTheElementVisible(signUpPasswordInput, 5) && isTheElementVisible(signUpConfirmPasswordInput, 5) && isTheElementVisible(signUpButton, 5);
     }
 
 }

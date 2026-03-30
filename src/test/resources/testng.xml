@@ -9,7 +9,13 @@
 
     <test name="Navigation Tests">
         <classes>
-            <class name="com.globant.mobile.tests.NavigationTest"></class>
+            <class name="com.globant.mobile.tests.NavigationTest"/>
+        </classes>
+    </test>
+
+    <test name="Sign Up Tests">
+        <classes>
+            <class name="com.globant.mobile.tests.SignUpTest"/>
         </classes>
     </test>
 </suite>
